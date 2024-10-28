@@ -30,4 +30,16 @@ app.get('/', (c) => {
 //API  cはcontext
 app.get("/posts",(c)=> c.json({posts: blogPosts}));
 
+//特定のブログを取得したい
+app.get("posts/:id",(c) => {
+  const id = c.req.param("id");
+  const post = blogPosts.find((p) => p.id === id);
+
+  if(post){
+    return c.json(post);
+  } else {
+    return c.json({message: "not found this page "},404);
+  }
+});
+
 export default app
