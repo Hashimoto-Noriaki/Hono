@@ -42,4 +42,15 @@ app.get("posts/:id",(c) => {
   }
 });
 
+//postの作成
+app.post("posts",async(c) => {
+  const {title,content} = await c.req.json<{
+    title:string; 
+    content:string;
+  }>();
+  const newPost = { id: String(blogPosts.length + 1),title,content };
+  blogPosts = [...blogPosts,newPost];
+  return c.json(newPost,201);
+});
+
 export default app
