@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 
 const app = new Hono()
 
+//ダミーデータ
 let blogPosts = [
   {
     id: "1",
