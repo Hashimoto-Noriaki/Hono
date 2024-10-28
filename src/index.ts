@@ -25,4 +25,7 @@ app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
+//API  cはcontext
+app.get("/posts",(c)=> c.json({posts: blogPosts}));
+
 export default app
